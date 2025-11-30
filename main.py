@@ -11,7 +11,7 @@ st.title("Security and Cryptography Course Final Project")
 st.header("Project Overview")
 st.write("""
          This is the submission for the final project for the Security and Cryptography course (CSC 302; 2025-2026) at
-         [Suez Canal University](https://suez.edu.eg/ar/en/) made by Ibrahim Habib.
+         [Suez Canal University](https://suez.edu.eg/ar/en/) made by [Ibrahim Habib](https://ibrahimhabib.me/).
          
         This projects implements multiple encryption and decryption algorithms discussed during the course. The algorithms
         included are:
@@ -272,7 +272,7 @@ with vigenere_tab:
             on_click=copy_to_decrypt_vigenere,
             key="vigenere_copy_to_decrypt",
         )
-        
+
     st.subheader("Vigenere Cipher Decryption")
     vigenere_ciphertext_input = st.text_area(
         "Enter ciphertext for Vigenere Cipher decryption:",
@@ -286,7 +286,7 @@ with vigenere_tab:
     decrypted_vigenere_plaintext_display = st.code(
         st.session_state.vigenere_decrypt_plaintext, language="text"
     )
-    
+
     def decrypt_vigenere():
         decrypted_plaintext = vignere_decrypt(
             vigenere_ciphertext_input, vigenere_decrypt_key
@@ -294,13 +294,13 @@ with vigenere_tab:
         st.session_state.vigenere_decrypt_ciphertext = vigenere_ciphertext_input
         st.session_state.vigenere_decrypt_key = vigenere_decrypt_key
         st.session_state.vigenere_decrypt_plaintext = decrypted_plaintext
-    
+
     def copy_to_encrypt_vigenere():
         st.session_state.vigenere_encrypt_plaintext = (
             st.session_state.vigenere_decrypt_plaintext
         )
         st.session_state.vigenere_encrypt_key = st.session_state.vigenere_decrypt_key
-        
+
     buttons_container_decrypt_vigenere = st.container(
         horizontal=True, horizontal_alignment="distribute"
     )
@@ -365,7 +365,7 @@ with autokey_tab:
             on_click=copy_to_decrypt_autokey,
             key="autokey_copy_to_decrypt",
         )
-        
+
     st.subheader("AutoKey Cipher Decryption")
     autokey_ciphertext_input = st.text_area(
         "Enter ciphertext for AutoKey Cipher decryption:",
@@ -379,7 +379,7 @@ with autokey_tab:
     decrypted_autokey_plaintext_display = st.code(
         st.session_state.autokey_decrypt_plaintext, language="text"
     )
-    
+
     def decrypt_autokey():
         decrypted_plaintext = autokey_decrypt(
             autokey_ciphertext_input, autokey_decrypt_key
@@ -387,17 +387,17 @@ with autokey_tab:
         st.session_state.autokey_decrypt_ciphertext = autokey_ciphertext_input
         st.session_state.autokey_decrypt_key = autokey_decrypt_key
         st.session_state.autokey_decrypt_plaintext = decrypted_plaintext
-        
+
     def copy_to_encrypt_autokey():
         st.session_state.autokey_encrypt_plaintext = (
             st.session_state.autokey_decrypt_plaintext
         )
         st.session_state.autokey_encrypt_key = st.session_state.autokey_decrypt_key
-        
+
     buttons_container_decrypt_autokey = st.container(
         horizontal=True, horizontal_alignment="distribute"
     )
-    
+
     with buttons_container_decrypt_autokey:
         autokey_decrypt_button = st.button(
             "Decrypt with AutoKey Cipher",
@@ -410,7 +410,7 @@ with autokey_tab:
             on_click=copy_to_encrypt_autokey,
             key="autokey_copy_to_encrypt",
         )
-        
+
 
 st.session_state.setdefault("railfence_encrypt_plaintext", "meet me after party")
 st.session_state.setdefault("railfence_encrypt_rails", 3)
@@ -437,19 +437,19 @@ with railfence_tab:
     )
 
     def encrypt_railfence():
-        railfence_ciphertext = rail_fence_encrypt(
-            railfence_plaintext, railfence_rails
-        )
+        railfence_ciphertext = rail_fence_encrypt(railfence_plaintext, railfence_rails)
         st.session_state.railfence_encrypt_plaintext = railfence_plaintext
         st.session_state.railfence_encrypt_rails = railfence_rails
         st.session_state.railfence_encrypt_ciphertext = railfence_ciphertext
-        
+
     def copy_to_decrypt_railfence():
         st.session_state.railfence_decrypt_ciphertext = (
             st.session_state.railfence_encrypt_ciphertext
         )
-        st.session_state.railfence_decrypt_rails = st.session_state.railfence_encrypt_rails
-        
+        st.session_state.railfence_decrypt_rails = (
+            st.session_state.railfence_encrypt_rails
+        )
+
     buttons_container_railfence = st.container(
         horizontal=True, horizontal_alignment="distribute"
     )
@@ -465,7 +465,7 @@ with railfence_tab:
             on_click=copy_to_decrypt_railfence,
             key="railfence_copy_to_decrypt",
         )
-        
+
     st.subheader("Rail Fence Cipher Decryption")
     railfence_ciphertext_input = st.text_area(
         "Enter ciphertext for Rail Fence Cipher decryption:",
@@ -481,7 +481,7 @@ with railfence_tab:
     decrypted_railfence_plaintext_display = st.code(
         st.session_state.railfence_decrypt_plaintext, language="text"
     )
-    
+
     def decrypt_railfence():
         decrypted_plaintext = rail_fence_decrypt(
             railfence_ciphertext_input, railfence_decrypt_rails
@@ -489,13 +489,15 @@ with railfence_tab:
         st.session_state.railfence_decrypt_ciphertext = railfence_ciphertext_input
         st.session_state.railfence_decrypt_rails = railfence_decrypt_rails
         st.session_state.railfence_decrypt_plaintext = decrypted_plaintext
-        
+
     def copy_to_encrypt_railfence():
         st.session_state.railfence_encrypt_plaintext = (
             st.session_state.railfence_decrypt_plaintext
         )
-        st.session_state.railfence_encrypt_rails = st.session_state.railfence_decrypt_rails
-        
+        st.session_state.railfence_encrypt_rails = (
+            st.session_state.railfence_decrypt_rails
+        )
+
     buttons_container_decrypt_railfence = st.container(
         horizontal=True, horizontal_alignment="distribute"
     )
@@ -511,7 +513,7 @@ with railfence_tab:
             on_click=copy_to_encrypt_railfence,
             key="railfence_copy_to_encrypt",
         )
-        
+
 st.session_state.setdefault("des_encrypt_plaintext", "02468aceeca86420")
 st.session_state.setdefault("des_encrypt_key", "0f1571c947d9e859")
 st.session_state.setdefault("des_encrypt_ciphertext", "")
@@ -560,7 +562,7 @@ with des_tab:
             on_click=copy_to_decrypt_des,
             key="des_copy_to_decrypt",
         )
-        
+
     st.subheader("DES Decryption")
     des_ciphertext = st.text_area(
         "Enter ciphertext (in hex) for DES decryption:",
@@ -599,10 +601,16 @@ with des_tab:
             on_click=copy_to_encrypt_des,
             key="des_copy_to_encrypt",
         )
-        
+
 st.header("Acknowledgements")
 st.write("""
          I would like to thank both
          - **Dr. Osama Helmy**: For his lectures and guidance throughout the course.
          - **Dr. Yasmin El-Leithy**: For her hands-on classes and sessions.
+""")
+
+st.header("Source Code")
+st.write("""
+            The source code for this project is available on GitHub 
+            through [this repo](https://github.com/ibrahimhabibeg/security-and-cryptography-project).
 """)
